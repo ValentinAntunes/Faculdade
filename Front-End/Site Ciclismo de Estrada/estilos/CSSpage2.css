@@ -1,0 +1,243 @@
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #c9c9c9;
+    margin: 0;
+    padding: 0;
+  }
+
+  header {
+    position: fixed;
+    background-color: #bb9f53;
+    color: #000000;
+    padding: 0px;
+    width: 100%;
+    top: 0px;
+    z-index: 2;
+  }
+
+  h1 {
+    margin: 0;
+  }
+  
+  nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    text-align: center;
+  }
+  
+  nav li {
+    display: inline-block;
+    margin-right: 20px;
+    text-align: center;
+  }
+  
+  nav li:last-child {
+    margin-right: 0;
+  }
+  
+  nav a {
+    color: #000000;
+    text-decoration: none;
+  }
+  
+  nav a:hover {
+    text-decoration: underline;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  main {
+    margin-top: 200px;
+    padding: 20px;
+    background-color: #000000;
+    box-shadow: 0px 0px 5px #000000;
+    margin-left: 300px;
+    margin-right: 300px;
+    position: absolute;
+    z-index: 1;
+  }
+  
+  section {
+    margin-bottom: 40px;
+  }
+  
+  h2 {
+    margin-top: 0;
+  }
+  
+  footer {
+    background-color: #0077C2;
+    color: #FFF;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  footer p {
+    margin: 0;
+  }
+
+  #back-to-top-btn {
+    display: inline-block;
+    position: static;
+    bottom: 20px;
+    right: 20px;
+    z-index: 99;
+    background-color: #000000bb;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+  }
+
+  #back-to-top-btna {
+    display: inline-block;
+    position: static;
+    bottom: 20px;
+    right: 20px;
+    z-index: 99;
+    background-color: #000000;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+  }
+  
+  #back-to-top-btn:hover {
+    cursor: pointer;
+    background-color: #000000bb;
+  }
+
+  table {
+    font-family: Arial, sans-serif;
+    border-collapse: collapse;
+    width: 80%;
+    margin: 20px 0;
+    text-align: center;
+  }
+
+  th, td {
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
+
+  th {
+    background-color: #000000;
+    color: #ffffff;
+    }
+
+    a {
+        color: #000000bb;
+        text-decoration: none;
+    }
+
+    .barra {
+      width: 100%;
+      background-color: black;
+    }
+
+    .th {
+      color: rgb(215, 183, 0);
+    }
+
+    .th2 {
+      color: silver;
+    }
+
+    .th3 {
+      color: rgb(221, 133, 11)
+    }
+
+    #ee {
+      margin-top: 20px;
+      margin-left: 20px;
+    }
+
+    .ii {
+      margin-top: -60px;
+      margin-left: 100px;
+    }
+
+    .bike {
+      margin-top: 5px;
+      margin-right: 25px;
+      float: right;
+    }
+
+    .rightside {
+      float: right;
+    }
+
+    .table1 {
+      background-color: rgb(177, 177, 177);
+    }
+    .imgcamp {
+      border-radius: 10px;}
+    .titulo{
+      color: #FFF;
+    }
+    .info{
+      margin-left: 30%;
+      margin-top: 50px;
+      margin-right: 5%;
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      color: #FFF;
+      text-align: justify;
+    }
+    .galery{
+      margin-top: -100px;
+      margin-left: 5%;
+      width: 250px;
+      height: 465px;
+      overflow: hidden;
+      
+    }
+    .galery .fotos{
+      display: inline-flex;
+      width: 700%;
+      animation-name: animacao;
+      animation-duration: 28s;
+      animation-iteration-count: infinite;
+    }
+    .galery .fotos img{
+      border-radius: 10px;
+      width: 19.9%;
+    }
+    .titulo2{
+      color: #FFF;
+      margin-top: 120px;
+    }
+    .figure{
+      color: #FFF;
+      float: right;
+      width: 30%;
+      text-align: center;
+      font-style: italic;
+      font-size: smaller;
+      text-indent: 0;
+      border: thin silver solid;
+      margin: 0.5em;
+      padding: 0.5em;
+    }
+    @keyframes animacao{
+      0%{margin-left: 0;}
+      15%{margin-left: 0;}
+      16.6%{margin-left: -100%;}
+      30%{margin-left: -100%;}
+      33.33%{margin-left: -200%;}
+      45%{margin-left: -200%;}
+      49.99%{margin-left: -300%;}
+      60%{margin-left: -300%;}
+      66.6%{margin-left: -400%;}
+      80.3%{margin-left: -400%;}
+      83.3%{margin-left: -500%;}
+      100%{margin-left: -500%;}
+    }
