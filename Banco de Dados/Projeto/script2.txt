@@ -1,0 +1,163 @@
+INSERT INTO Cliente (nome, telefone, email, endereco)
+VALUES 
+('João Silva', '99999-1234', 'joao@email.com', 'Rua A, 123'),
+('Maria Oliveira', '99999-2345', 'maria@email.com', 'Rua B, 456'),
+('Pedro Costa', '99999-3456', 'pedro@email.com', 'Rua C, 789'),
+('Ana Souza', '99999-4567', 'ana@email.com', 'Rua D, 101'),
+('Lucas Lima', '99999-5678', 'lucas@email.com', 'Rua E, 202'),
+('Beatriz Mendes', '99999-6789', 'beatriz@email.com', 'Rua F, 303'),
+('Fernando Rocha', '99999-7890', 'fernando@email.com', 'Rua G, 404'),
+('Carla Dias', '99999-8901', 'carla@email.com', 'Rua H, 505'),
+('Gabriel Santos', '99999-9012', 'gabriel@email.com', 'Rua I, 606'),
+('Juliana Ferreira', '99999-0123', 'juliana@email.com', 'Rua J, 707');
+
+INSERT INTO Veiculo (modelo, marca, ano, placa, cliente_id)
+VALUES 
+('Civic', 'Honda', 2020, 'ABC-1234', 1),
+('Corolla', 'Toyota', 2019, 'DEF-5678', 2),
+('Fiesta', 'Ford', 2018, 'GHI-9012', 3),
+('HB20', 'Hyundai', 2021, 'JKL-3456', 4),
+('Onix', 'Chevrolet', 2022, 'MNO-7890', 5),
+('Renegade', 'Jeep', 2020, 'PQR-1234', 6),
+('Cruze', 'Chevrolet', 2017, 'STU-5678', 7),
+('Compass', 'Jeep', 2021, 'VWX-9012', 8),
+('Golf', 'Volkswagen', 2019, 'YZA-3456', 9),
+('Up', 'Volkswagen', 2022, 'BCD-7890', 10);
+
+INSERT INTO Mecanico (nome, especialidade, telefone, email)
+VALUES 
+('Carlos Souza', 'Motor', '88888-1234', 'carlos@email.com'),
+('Ricardo Santos', 'Suspensão', '88888-2345', 'ricardo@email.com'),
+('Paulo Lima', 'Freios', '88888-3456', 'paulo@email.com'),
+('André Silva', 'Elétrica', '88888-4567', 'andre@email.com'),
+('Marcos Almeida', 'Transmissão', '88888-5678', 'marcos@email.com'),
+('Eduardo Mendes', 'Motor', '88888-6789', 'eduardo@email.com'),
+('Roberto Oliveira', 'Suspensão', '88888-7890', 'roberto@email.com'),
+('Renato Souza', 'Elétrica', '88888-8901', 'renato@email.com'),
+('Luciano Silva', 'Freios', '88888-9012', 'luciano@email.com'),
+('Sérgio Lopes', 'Transmissão', '88888-0123', 'sergio@email.com');
+
+INSERT INTO Cliente_Mecanico (idCliente, idMecanico, data_associacao)
+VALUES 
+(1, 1, '2024-01-01'),
+(2, 2, '2024-01-02'),
+(3, 3, '2024-01-03'),
+(4, 4, '2024-01-04'),
+(5, 5, '2024-01-05'),
+(6, 6, '2024-01-06'),
+(7, 7, '2024-01-07'),
+(8, 8, '2024-01-08'),
+(9, 9, '2024-01-09'),
+(10, 10, '2024-01-10');
+
+INSERT INTO Defeito (descricao, veiculo_id, status, data_registro)
+VALUES 
+('Falha no motor', 1, 'Aberto', '2024-01-10'),
+('Problema na suspensão', 2, 'Aberto', '2024-01-11'),
+('Freio com ruído', 3, 'Fechado', '2024-01-12'),
+('Fusível queimado', 4, 'Aberto', '2024-01-13'),
+('Transmissão com problema', 5, 'Fechado', '2024-01-14'),
+('Correia dentada rompida', 6, 'Aberto', '2024-01-15'),
+('Problema na embreagem', 7, 'Fechado', '2024-01-16'),
+('Pane elétrica', 8, 'Aberto', '2024-01-17'),
+('Problema nos faróis', 9, 'Fechado', '2024-01-18'),
+('Suspensão danificada', 10, 'Aberto', '2024-01-19');
+
+INSERT INTO Servico (defeito_id, mecanico_id, descricao, custo, data_conclusao)
+VALUES 
+(1, 1, 'Substituição do motor', 2500.00, '2024-01-20'),
+(2, 2, 'Troca de amortecedores', 800.00, '2024-01-21'),
+(3, 3, 'Troca de pastilhas de freio', 300.00, '2024-01-22'),
+(4, 4, 'Troca de fusível', 50.00, '2024-01-23'),
+(5, 5, 'Reparo na transmissão', 1800.00, '2024-01-24'),
+(6, 6, 'Troca da correia dentada', 400.00, '2024-01-25'),
+(7, 7, 'Troca do disco de embreagem', 900.00, '2024-01-26'),
+(8, 8, 'Reparo no sistema elétrico', 600.00, '2024-01-27'),
+(9, 9, 'Troca das lâmpadas', 150.00, '2024-01-28'),
+(10, 10, 'Reparo na suspensão', 1200.00, '2024-01-29');
+
+INSERT INTO Peca (nome, descricao, preco)
+VALUES 
+('Motor', 'Motor completo', 2300.00),
+('Amortecedor', 'Amortecedor dianteiro', 400.00),
+('Pastilha de Freio', 'Pastilhas dianteiras', 150.00),
+('Fusível', 'Fusível 20A', 10.00),
+('Transmissão', 'Transmissão automática', 1700.00),
+('Correia Dentada', 'Correia dentada original', 250.00),
+('Disco de Embreagem', 'Disco de embreagem', 450.00),
+('Lâmpada', 'Lâmpada de farol', 60.00),
+('Suspensão', 'Suspensão completa', 1100.00),
+('Óleo de Motor', 'Óleo sintético', 60.00);
+
+INSERT INTO Servico_Peca (servico_id, peca_id, quantidade)
+VALUES 
+(1, 1, 1),
+(2, 2, 2),
+(3, 3, 4),
+(4, 4, 1),
+(5, 5, 1),
+(6, 6, 1),
+(7, 7, 1),
+(8, 8, 2),
+(9, 9, 2),
+(10, 10, 1);
+
+INSERT INTO Ordem_de_Servico (cliente_id, veiculo_id, data_abertura, status, valor_total)
+VALUES 
+(1, 1, '2024-01-20', 'Aberta', 2500.00),
+(2, 2, '2024-01-21', 'Fechada', 800.00),
+(3, 3, '2024-01-22', 'Aberta', 300.00),
+(4, 4, '2024-01-23', 'Aberta', 50.00),
+(5, 5, '2024-01-24', 'Fechada', 1800.00),
+(6, 6, '2024-01-25', 'Aberta', 400.00),
+(7, 7, '2024-01-26', 'Fechada', 900.00),
+(8, 8, '2024-01-27', 'Aberta', 600.00),
+(9, 9, '2024-01-28', 'Fechada', 150.00),
+(10, 10, '2024-01-29', 'Aberta', 1200.00);
+
+INSERT INTO Agendamento (cliente_id, veiculo_id, mecanico_id, data_agendamento, descricao)
+VALUES 
+(1, 1, 1, '2024-02-01 08:30:00', 'Troca de óleo'),
+(2, 2, 2, '2024-02-02 09:00:00', 'Revisão geral'),
+(3, 3, 3, '2024-02-03 10:00:00', 'Alinhamento'),
+(4, 4, 4, '2024-02-04 11:30:00', 'Troca de bateria'),
+(5, 5, 5, '2024-02-05 08:00:00', 'Troca de pneus'),
+(6, 6, 6, '2024-02-06 09:45:00', 'Revisão de freios'),
+(7, 7, 7, '2024-02-07 10:15:00', 'Troca da embreagem'),
+(8, 8, 8, '2024-02-08 11:00:00', 'Reparo elétrico'),
+(9, 9, 9, '2024-02-09 08:30:00', 'Verificação de luzes'),
+(10, 10, 10, '2024-02-10 09:30:00', 'Troca de correia dentada');
+
+INSERT INTO Pagamento (ordem_servico_id, valor_pago, data_pagamento, metodo_pagamento)
+VALUES 
+(1, 2500.00, '2024-02-01', 'Cartão de Crédito'),
+(2, 800.00, '2024-02-02', 'Dinheiro'),
+(3, 300.00, '2024-02-03', 'Cartão de Débito'),
+(4, 50.00, '2024-02-04', 'Cartão de Crédito'),
+(5, 1800.00, '2024-02-05', 'Transferência Bancária'),
+(6, 400.00, '2024-02-06', 'Cartão de Débito'),
+(7, 900.00, '2024-02-07', 'Dinheiro'),
+(8, 600.00, '2024-02-08', 'Cartão de Crédito'),
+(9, 150.00, '2024-02-09', 'Cartão de Débito'),
+(10, 1200.00, '2024-02-10', 'Transferência Bancária');
+
+UPDATE Cliente 
+SET telefone = '99999-9999' 
+WHERE nome = 'João Silva';
+
+UPDATE Defeito 
+SET status = 'Fechado' 
+WHERE idDefeito = 1;
+
+UPDATE Servico 
+SET custo = 2800.00 
+WHERE idServico = 1;
+
+DELETE FROM Cliente 
+WHERE nome = 'Fernando Rocha';
+
+DELETE FROM Servico 
+WHERE idServico = 2;
+
+DELETE FROM Peca 
+WHERE nome = 'Óleo de Motor';

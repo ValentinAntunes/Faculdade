@@ -1,0 +1,105 @@
+CREATE DATABASE OficinaMecanica;
+USE OficinaMecanica;
+
+CREATE TABLE Cliente (
+    idCliente INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(45) NOT NULL,
+    telefone VARCHAR(45),
+    email VARCHAR(45),
+    endereco VARCHAR(45)
+);
+
+CREATE TABLE Veiculo (
+    idVeiculo INT AUTO_INCREMENT PRIMARY KEY,
+    modelo VARCHAR(45) NOT NULL,
+    marca VARCHAR(45) NOT NULL,
+    ano INT,
+    placa VARCHAR(45),
+    cliente_id INT,
+    FOREIGN KEY (cliente_id) REFERENCES Cliente(idCliente) ON DELETE CASCADE
+);
+
+CREATE TABLE Mecanico (
+    idMecanico INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(45) NOT NULL,
+    especialidade VARCHAR(45),
+    telefone VARCHAR(45),
+    email VARCHAR(45)
+);
+
+CREATE TABLE Cliente_Mecanico (
+    idCliente INT,
+    idMecanico INT,
+    data_associacao DATE,
+    PRIMARY KEY (idCliente, idMecanico),
+    FOREIGN KEY (idCliente) REFERENCES Cliente(idCliente) ON DELETE CASCADE,
+    FOREIGN KEY (idMecanico) REFERENCES Mecanico(idMecanico) ON DELETE CASCADE
+);
+
+CREATE TABLE Defeito (
+    idDefeito INT AUTO_INCREMENT PRIMARY KEY,
+    descricao TEXT NOT NULL,
+    veiculo_id INT,
+    status VARCHAR(45),
+    data_registro DATE,
+    FOREIGN KEY (veiculo_id) REFERENCES Veiculo(idVeiculo) ON DELETE CASCADE
+);
+
+CREATE TABLE Servico (
+    idServico INT AUTO_INCREMENT PRIMARY KEY,
+    defeito_id INT,
+    mecanico_id INT,
+    descricao TEXT NOT NULL,
+    custo DECIMAL(10, 2),
+    data_conclusao DATE,
+    FOREIGN KEY (defeito_id) REFERENCES Defeito(idDefeito) ON DELETE CASCADE,
+    FOREIGN KEY (mecanico_id) REFERENCES Mecanico(idMecanico) ON DELETE CASCADE
+);
+
+CREATE TABLE Peca (
+    idPeca INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(45),
+    descricao VARCHAR(45),
+    preco DECIMAL(10, 2)
+);
+
+CREATE TABLE Servico_Peca (
+    servico_id INT,
+    peca_id INT,
+    quantidade INT,
+    PRIMARY KEY (servico_id, peca_id),
+    FOREIGN KEY (servico_id) REFERENCES Servico(idServico) ON DELETE CASCADE,
+    FOREIGN KEY (peca_id) REFERENCES Peca(idPeca) ON DELETE CASCADE
+);
+
+CREATE TABLE Ordem_de_Servico (
+    idOrdem_de_Servico INT AUTO_INCREMENT PRIMARY KEY,
+    cliente_id INT,
+    veiculo_id INT,
+    data_abertura DATE,
+    status VARCHAR(45),
+    valor_total DECIMAL(10, 2),
+    FOREIGN KEY (cliente_id) REFERENCES Cliente(idCliente) ON DELETE CASCADE,
+    FOREIGN KEY (veiculo_id) REFERENCES Veiculo(idVeiculo) ON DELETE CASCADE
+);
+
+CREATE TABLE Agendamento (
+    idAgendamento INT AUTO_INCREMENT PRIMARY KEY,
+    cliente_id INT,
+    veiculo_id INT,
+    mecanico_id INT,
+    data_agendamento DATETIME,
+    descricao VARCHAR(45),
+    FOREIGN KEY (cliente_id) REFERENCES Cliente(idCliente) ON DELETE CASCADE,
+    FOREIGN KEY (veiculo_id) REFERENCES Veiculo(idVeiculo) ON DELETE CASCADE,
+    FOREIGN KEY (mecanico_id) REFERENCES Mecanico(idMecanico) ON DELETE CASCADE
+);
+
+CREATE TABLE Pagamento (
+    idPagamento INT AUTO_INCREMENT PRIMARY KEY,
+    ordem_servico_id INT,
+    valor_pago DECIMAL(10, 2),
+    data_pagamento DATE,
+    metodo_pagamento VARCHAR(45),
+    FOREIGN KEY (ordem_servico_id) REFERENCES Ordem_de_Servico(idOrdem_de_Servico) ON DELETE CASCADE
+);

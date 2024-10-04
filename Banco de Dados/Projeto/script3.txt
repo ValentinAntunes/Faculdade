@@ -1,0 +1,64 @@
+SELECT * FROM Cliente;
+SELECT * FROM Veiculo;
+SELECT * FROM Mecanico;
+SELECT * FROM Cliente_Mecanico;
+SELECT * FROM Defeito;
+SELECT * FROM Servico;
+SELECT * FROM Peca;
+SELECT * FROM Servico_Peca;
+SELECT * FROM Ordem_de_Servico;
+SELECT * FROM Agendamento;
+SELECT * FROM Pagamento;
+
+SELECT * FROM Cliente
+WHERE nome = 'João Silva';
+
+SELECT * FROM Veiculo
+WHERE cliente_id = (SELECT idCliente FROM Cliente WHERE nome = 'João Silva');
+
+SELECT * FROM Servico
+WHERE defeito_id IN (SELECT idDefeito FROM Defeito WHERE veiculo_id = (SELECT idVeiculo FROM Veiculo WHERE cliente_id = (SELECT idCliente FROM Cliente WHERE nome = 'João Silva')));
+
+SELECT Cliente.nome, Veiculo.modelo, Servico.descricao AS ServicoDescricao, Servico.custo
+FROM Cliente
+JOIN Veiculo ON Cliente.idCliente = Veiculo.cliente_id
+JOIN Defeito ON Veiculo.idVeiculo = Defeito.veiculo_id
+JOIN Servico ON Defeito.idDefeito = Servico.defeito_id;
+
+SELECT Cliente.nome, Veiculo.modelo, Ordem_de_Servico.data_abertura, Pagamento.valor_pago, Pagamento.metodo_pagamento
+FROM Ordem_de_Servico
+JOIN Cliente ON Ordem_de_Servico.cliente_id = Cliente.idCliente
+JOIN Veiculo ON Ordem_de_Servico.veiculo_id = Veiculo.idVeiculo
+JOIN Pagamento ON Ordem_de_Servico.idOrdem_de_Servico = Pagamento.ordem_servico_id;
+
+
+SELECT Defeito.descricao AS DefeitoDescricao, Defeito.status, Servico.descricao AS ServicoDescricao, Servico.custo
+FROM Defeito
+JOIN Servico ON Defeito.idDefeito = Servico.defeito_id
+WHERE Defeito.status = 'Aberto';
+
+
+CREATE VIEW VisaoClientesVeiculos AS
+SELECT Cliente.nome AS NomeCliente, Cliente.telefone, Veiculo.modelo, Veiculo.placa, Veiculo.ano
+FROM Cliente
+JOIN Veiculo ON Cliente.idCliente = Veiculo.cliente_id;
+
+CREATE VIEW VisaoServicosDefeitos AS
+SELECT Servico.descricao AS ServicoDescricao, Servico.custo, Defeito.descricao AS DefeitoDescricao, Defeito.status
+FROM Servico
+JOIN Defeito ON Servico.defeito_id = Defeito.idDefeito;
+
+CREATE VIEW VisaoOrdensPagamentos AS
+SELECT Ordem_de_Servico.idOrdem_de_Servico, Ordem_de_Servico.data_abertura, Ordem_de_Servico.status, Pagamento.valor_pago, Pagamento.metodo_pagamento
+FROM Ordem_de_Servico
+JOIN Pagamento ON Ordem_de_Servico.idOrdem_de_Servico = Pagamento.ordem_servico_id;
+
+CREATE INDEX idx_cliente_nome ON Cliente(nome);
+
+CREATE INDEX idx_veiculo_placa ON Veiculo(placa);
+
+CREATE INDEX idx_servico_custo ON Servico(custo);
+
+CREATE INDEX idx_defeito_status ON Defeito(status);
+
+CREATE INDEX idx_pagamento_metodo ON Pagamento(metodo_pagamento);
